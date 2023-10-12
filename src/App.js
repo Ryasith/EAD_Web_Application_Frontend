@@ -1,58 +1,98 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import ProtectedRoute from './ProtectedRoute'
+import Header from './components/Header'
+import Dashboard from './pages/Dashboard'
+import Authentication from './pages/Authentication'
+import UserList from './pages/UserList'
+import ReservationList from './pages/ReservationList'
+import EditReservation from './pages/EditReservation'
+import CreateReservation from './pages/CreateReservation'
+import AvailableTrainsList from './pages/AvailableTrainsList'
+import AddReservation from './pages/AddReservation'
+import TravelersList from './pages/TravelersList'
+import EditTraveler from './pages/EditTraveler'
+import TrainList from './pages/TrainList'
+import CreateTraveler from './pages/CreateTraveler'
+import CreateTrains from './pages/CreateTrains'
+import Home from './pages/Home'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+    <>
+      <Router>
+        <div className='container'>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/auth' element={<Authentication />} />
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/userList" element={
+              <ProtectedRoute>
+                <UserList />
+              </ProtectedRoute>
+            } />
+            <Route path="/reservationList" element={
+              <ProtectedRoute>
+                <ReservationList />
+              </ProtectedRoute>
+            } />
+            <Route path="/editReservation" element={
+              <ProtectedRoute>
+                <EditReservation />
+              </ProtectedRoute>
+            } />
+            <Route path="/createReservation" element={
+              <ProtectedRoute>
+                <CreateReservation />
+              </ProtectedRoute>
+            } />
+            <Route path="/availableTrains" element={
+              <ProtectedRoute>
+                <AvailableTrainsList />
+              </ProtectedRoute>
+            } />
+            <Route path="/addReservation" element={
+              <ProtectedRoute>
+                <AddReservation />
+              </ProtectedRoute>
+            } />
+            <Route path="/travelersList" element={
+              <ProtectedRoute>
+                <TravelersList />
+              </ProtectedRoute>
+            } />
+            <Route path="/editTraveler" element={
+              <ProtectedRoute>
+                <EditTraveler />
+              </ProtectedRoute>
+            } />
+            <Route path="/trainList" element={
+              <ProtectedRoute>
+                <TrainList />
+              </ProtectedRoute>
+            } />
+            <Route path="/createTraveler" element={
+              <ProtectedRoute>
+                <CreateTraveler />
+              </ProtectedRoute>
+            } />
+            <Route path="/createTrain" element={
+              <ProtectedRoute>
+                <CreateTrains />
+              </ProtectedRoute>
+            } />
+          </Routes>
+        </div>
+      </Router>
+      <ToastContainer />
+    </>
+  )
 }
 
-export default App;
+export default App

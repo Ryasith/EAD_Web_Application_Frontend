@@ -1,0 +1,32 @@
+.product {
+  margin-top: 50px;
+}
+.product .boxItems {
+  transition: 0.5s;
+  display: flex;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.product .boxItems:hover {
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+.product img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.product .details {
+  width: 100%;
+}
+.product .details h3 {
+  font-size: 17px;
+}
+.product .details p {
+  margin: 10px 0;
+}
+.product button {
+  font-size: 25px;
+  margin-top: 15px;
+  float: right;
+}
