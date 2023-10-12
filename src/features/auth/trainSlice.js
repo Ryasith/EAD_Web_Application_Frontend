@@ -48,6 +48,42 @@ export const alltrains = createAsyncThunk(
   }
 )
 
+// Delete Train By Id
+export const deletetrain = createAsyncThunk(
+  'users/deletetrain',
+  async (id,thunkAPI) => {
+    try {
+      return await trainService.deleteTrain(id)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
+// disable Train
+export const disabletrain = createAsyncThunk(
+  'users/disabletrain',
+  async (id,thunkAPI) => {
+    try {
+      return await trainService.disableTrain(id)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 export const trainSlice = createSlice({
   name: 'trains',
   initialState,
@@ -88,6 +124,32 @@ export const trainSlice = createSlice({
         state.isError = true
         state.message = action.payload
         state.allTrains = null
+      })
+      .addCase(deletetrain.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(deletetrain.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.message = action.payload
+      })
+      .addCase(deletetrain.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(disabletrain.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(disabletrain.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.message = action.payload
+      })
+      .addCase(disabletrain.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
       })
   },
 })

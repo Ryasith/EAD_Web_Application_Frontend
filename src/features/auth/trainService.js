@@ -16,9 +16,25 @@ const availableTrains = async (resevationObj) => {
   return response.data
 }
 
+// Delete train by id
+const deleteTrain = async (id) => {
+  const response = await axios.delete(API_URL+"/"+id)
+
+  return response.data
+}
+
+// Disable train by id
+const disableTrain = async (id) => {
+  const response = await axios.patch(API_URL+"/active_deactive/"+id)
+
+  return response.data
+}
+
 const trainService = {
     TrainList,
     availableTrains,
+    deleteTrain,
+    disableTrain,
 }
 
 export default trainService

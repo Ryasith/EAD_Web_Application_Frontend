@@ -91,7 +91,7 @@ function CreateTrains() {
                         </label>
                         <input
                           type="text"
-                          name="nic"
+                          name="name"
                           className="form-control form-control-lg"
                           onChange={onChange}
                           required

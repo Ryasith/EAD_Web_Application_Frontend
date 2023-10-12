@@ -6,6 +6,7 @@ import { MDBTable, MDBTableHead, MDBTableBody, MDBRow, MDBCol, MDBContainer, MDB
 import { useNavigate } from 'react-router-dom'
 import Spinner from '../components/Spinner'
 import Swal from 'sweetalert2'
+import {deletetrain, disabletrain} from '../features/auth/trainSlice'
 
 function TrainList() {
 
@@ -40,7 +41,7 @@ function TrainList() {
     //------to-do-----------------
   }
 
-  const selectTraveler = (item) => () => {
+  const selectTrain = (item) => () => {
     try {
         localStorage.setItem('selectedTraveler', JSON.stringify(item));
         navigate('/editTraveler');
@@ -49,7 +50,7 @@ function TrainList() {
     }
 }
 
-const deleteTraveler = (nic) => () => {
+const deleteTrain = (id) => () => {
   Swal.fire({
     title: 'Are you sure?',
     text: "You won't be able to revert this!",
@@ -60,21 +61,21 @@ const deleteTraveler = (nic) => () => {
     confirmButtonText: 'Yes, delete it!'
   }).then((result) => {
     if (result.isConfirmed) {
-    //   dispatch(deleteuser(nic)).then(()=>{
+      dispatch(deletetrain(id)).then(()=>{
         Swal.fire(
           'Deleted!',
-          'Your file has been deleted.',
+          'The Train has been removed.',
           'success'
         )
-    //   })
+      })
     }
   });
 }
 
-const ActivateTraveler = (nic) => () => {
+const ActivateTrain = (id) => () => {
   Swal.fire({
     title: 'Are you sure?',
-    text: "Do you really want to enable/disable this user!",
+    text: "Do you really want to enable/disable this train!",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
@@ -82,13 +83,13 @@ const ActivateTraveler = (nic) => () => {
     confirmButtonText: 'Enable/Disable'
   }).then((result) => {
     if (result.isConfirmed) {
-    //   dispatch(disableuser(nic)).then(()=>{
+      dispatch(disabletrain(id)).then(()=>{
         Swal.fire(
           'Enabled/Disabled!',
-          'The traveler has been enabled/disabled.',
+          'The train has been enabled/disabled.',
           'success'
         )
-    //   })
+      })
     }
   });
 }
@@ -161,11 +162,11 @@ if (isLoading) {
                                         <td>
                                             <MDBCol size="4">
                                                 <MDBBtnGroup>
-                                    <MDBBtn color='success' onClick={selectTraveler(item)}>Edit</MDBBtn>
+                                    <MDBBtn color='success' onClick={selectTrain(item)}>Edit</MDBBtn>
                                     &nbsp;&nbsp;
-                                    <MDBBtn color='danger' onClick={deleteTraveler(item.nic)}>Delete</MDBBtn>
+                                    <MDBBtn color='danger' onClick={deleteTrain(item.id)}>Delete</MDBBtn>
                                     &nbsp;&nbsp;
-                                    <MDBBtn color='info' onClick={ActivateTraveler(item.nic)}>{item.isActive?"Deactivate":"Activate"}</MDBBtn>
+                                    <MDBBtn color='info' onClick={ActivateTrain(item.id)}>{item.isActive?"Deactivate":"Activate"}</MDBBtn>
                                 </MDBBtnGroup>
                                 </MDBCol>
                                 </td>
