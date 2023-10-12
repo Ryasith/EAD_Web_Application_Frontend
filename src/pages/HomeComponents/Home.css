@@ -102,23 +102,7 @@ body {
   background: url('../../../public//images//cardImages/homeBG2.jpg') no-repeat
     center top/cover;
 }
-.slide:nth-child(2) {
+/* .slide:nth-child(2) {
   background: url('https://source.unsplash.com/BeOW_PJjA0w/1600x900') no-repeat
     center top/cover;
-}
-.slide:nth-child(3) {
-  background: url('https://source.unsplash.com/TMOeGZw9NY4/1600x900') no-repeat
-    center top/cover;
-}
-.slide:nth-child(4) {
-  background: url('https://source.unsplash.com/yXpA_eCbtzI/1600x900') no-repeat
-    center top/cover;
-}
-.slide:nth-child(5) {
-  background: url('https://source.unsplash.com/ULmaQh9Gvbg/1600x900') no-repeat
-    center top/cover;
-} 
-.slide:nth-child(6)  {
-  background: url('https://source.unsplash.com/ggZuL3BTSJU/1600x900') no-repeat
-    center center/cover;
-}
+} */

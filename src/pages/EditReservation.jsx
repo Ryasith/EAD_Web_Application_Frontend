@@ -24,8 +24,8 @@ const EditReservation = (props) => {
         date: startDate.toDateString
   }
 
-  const { isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.trains
+  const { isLoading, message } = useSelector(
+    (state) => state.reservation
   )
 
     // Calculate the minimum and maximum allowed dates
@@ -132,13 +132,14 @@ const EditReservation = (props) => {
   useEffect(()=>{
     setFromOption(reservation.depature);
     setToOption(reservation.arrival);
+    setSeatCount(reservation.passengersCount);
   },[reservation]);
 
-  useEffect(()=>{
-    if(isSuccess){
-      navigate("/availableTrains");
-    }
-  },[isSuccess])
+  // useEffect(()=>{
+  //   if(isSuccess){
+  //     navigate("/availableTrains");
+  //   }
+  // },[isSuccess])
 
   function CustomInput({value,onClick}){
     return(
@@ -172,8 +173,9 @@ const EditReservation = (props) => {
       confirmButtonText: 'Yes, Update it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(updatereservation(reservation.id)).then(()=>{
+        dispatch(updatereservation(reservation.id,reservationObj)).then(()=>{
           Swal.fire(message);
+          // navigate("/availableTrains");
         })
       }
     });
@@ -243,7 +245,7 @@ const EditReservation = (props) => {
                           name="seatCount"
                           className="form-control input-group"
                           onChange={(e) => setSeatCount(e.target.value)}
-                          value={reservation.passengersCount}
+                          value={seatCount}
                           required
                         />
                       </div>

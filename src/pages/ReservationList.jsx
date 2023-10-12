@@ -70,6 +70,7 @@ const cancelReservation = (id) => () => {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(deletereservation(id)).then(()=>{
+          console.log(message);
           Swal.fire(message);
         })
       }

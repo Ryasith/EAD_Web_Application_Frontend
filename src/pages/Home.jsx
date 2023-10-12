@@ -8,26 +8,10 @@ const Home = () => {
       title: 'Slide One',
       content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic maxime, voluptatibus labore doloremque vero!',
     },
-    {
-      title: 'Slide Two',
-      content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic maxime, voluptatibus labore doloremque vero!',
-    },
-    {
-      title: 'Slide Three',
-      content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic maxime, voluptatibus labore doloremque vero!',
-    },
-    {
-      title: 'Slide Four',
-      content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic maxime, voluptatibus labore doloremque vero!',
-    },
-    {
-      title: 'Slide Five',
-      content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic maxime, voluptatibus labore doloremque vero!',
-    },
-    {
-      title: 'Slide Six',
-      content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic maxime, voluptatibus labore doloremque vero!',
-    },
+    // {
+    //   title: 'Slide Two',
+    //   content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic maxime, voluptatibus labore doloremque vero!',
+    // }
   ];
 
   const nextSlide = () => {

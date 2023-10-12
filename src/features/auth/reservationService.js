@@ -24,8 +24,8 @@ const getReservation = async (id) => {
 }
 
 // update reservation by id
-const updateReservation = async (id) => {
-  const response = await axios.put(API_URL+"/"+id)
+const updateReservation = async (id,reservationObj) => {
+  const response = await axios.put(API_URL+"/"+id,reservationObj)
 
   return response.data
 }

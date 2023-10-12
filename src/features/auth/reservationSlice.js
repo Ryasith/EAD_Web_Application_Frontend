@@ -70,9 +70,9 @@ export const getreservation = createAsyncThunk(
 // Update Reservation by ID
 export const updatereservation = createAsyncThunk(
   'reservations/updatereservation',
-  async (id,thunkAPI) => {
+  async (id,reservationObj,thunkAPI) => {
     try {
-      return await reservationService.updateReservation(id)
+      return await reservationService.updateReservation(id,reservationObj)
     } catch (error) {
       const message =
         (error.response &&
@@ -164,7 +164,7 @@ export const reservationSlice = createSlice({
       .addCase(updatereservation.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.resevationObj = action.payload
+        state.message = action.payload
       })
       .addCase(updatereservation.rejected, (state, action) => {
         state.isLoading = false

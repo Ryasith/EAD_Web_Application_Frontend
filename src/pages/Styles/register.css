@@ -22,6 +22,14 @@
     z-index: 2;
   }
 
+  .trainEditimage {
+    background-image: url('../../../public/images/cardImages/trainEdit.png');
+    background-size: 800px 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+  }
+
   .hr1 {
     color: rgb(255, 166, 1);
     border-top: 1vh solid;
