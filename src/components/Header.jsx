@@ -17,7 +17,9 @@ function Header() {
   return (
     <header className='header'>
       <div className='logo'>
-        <Link to='/dashboard'>EZ Booking</Link>
+        <Link to='/dashboard'>
+        <img src="../images/cardImages/Train_logo.png" alt='cover' />
+        </Link>
       </div>
       <ul>
         {user ? (

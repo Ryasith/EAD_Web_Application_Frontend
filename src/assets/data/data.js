@@ -14,12 +14,12 @@ export const Backoffice = [
 ]
 
 export const Travel_Agent = [
-  {
-    id: 1,
-    name: "User Management",
-    cover: "../images/cardImages/icon_user.png",
-    to: "/userList",
-  },
+  // {
+  //   id: 1,
+  //   name: "User Management",
+  //   cover: "../images/cardImages/icon_user.png",
+  //   to: "/userList",
+  // },
   {
     id: 2,
     name: "Traveler Management",
