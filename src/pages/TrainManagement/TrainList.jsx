@@ -42,8 +42,8 @@ function TrainList() {
 
   const selectTrain = (item) => () => {
     try {
-        localStorage.setItem('selectedTraveler', JSON.stringify(item));
-        navigate('/editTraveler');
+        localStorage.setItem('selectedTrain', JSON.stringify(item));
+        navigate('/editTrain');
     } catch (error) {
         console.error('Navigation error:', error);
     }

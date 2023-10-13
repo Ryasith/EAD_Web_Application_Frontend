@@ -16,6 +16,7 @@ import EditTraveler from './pages/UserManagement/EditTraveler'
 import TrainList from './pages/TrainManagement/TrainList'
 import CreateTraveler from './pages/UserManagement/CreateTraveler'
 import CreateTrains from './pages/TrainManagement/CreateTrains'
+import EditTrain from './pages/TrainManagement/EditTrain'
 import Home from './pages/Home'
 
 function App() {
@@ -85,6 +86,11 @@ function App() {
             <Route path="/createTrain" element={
               <ProtectedRoute>
                 <CreateTrains />
+              </ProtectedRoute>
+            } />
+            <Route path="/editTrain" element={
+              <ProtectedRoute>
+                <EditTrain />
               </ProtectedRoute>
             } />
           </Routes>

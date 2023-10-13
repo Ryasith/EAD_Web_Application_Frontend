@@ -38,6 +38,14 @@
     z-index: 2;
   }
 
+  .edittrainimage {
+    background-image: url('../../../public/images/cardImages/editTrain.png');
+    background-size: 900px 700px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+  }
+
   .hr1 {
     color: rgb(255, 166, 1);
     border-top: 1vh solid;

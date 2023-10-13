@@ -1,17 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../Styles/register.css";
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import axios from "axios";
-import { createtrain, disabletrain, deletetrain, reset } from '../../features/train/trainSlice'
+import { updatetrain } from '../../features/train/trainSlice'
 import Swal from 'sweetalert2'
-import Stations from './Stations';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { FaCalendarAlt } from 'react-icons/fa';
+import { FaCalendarAlt, FaDumpster } from 'react-icons/fa';
+import { MdOutlineDeleteForever } from 'react-icons/md'
 
-function CreateTrains() {
+function EditTrain() {
 
   const [trainName, setTrainName] = useState("");
   const [seatCount, setSeatCount] = useState("");
@@ -20,6 +19,7 @@ function CreateTrains() {
   const [stations, setStations] = useState("");
   const [newStation, setNewStation] = useState({ stationName: '', time: '' });
   const [startDate, setStartDate] = useState(new Date());
+  const [trainID, setTrainID] = useState("")
 
   const newTrainObj = {
     trainName: trainName,
@@ -30,6 +30,16 @@ function CreateTrains() {
     },
     stations: [stations],
   }
+
+  useEffect(()=>{
+    const train = (JSON.parse(localStorage.getItem('selectedTrain')));
+    setTrainID(train.id)
+    setTrainName(train.trainName);
+    setSeatCount(train.seatCount);
+    setTrainType(train.trainTypesDetails.trainType);
+    setPrice(train.trainTypesDetails.price);
+    setStations(train.stations);
+  },[]);
 
   const traintype = [
     "Express",
@@ -155,29 +165,35 @@ function CreateTrains() {
     setTrainType(selectedOption);
   };
 
-  const onSubmitCreate = (e) => {
+  const onSubmitUpdate = (e) => {
     e.preventDefault()
 
-    dispatch(createtrain(newTrainObj)).then(()=>{
+    dispatch(updatetrain(trainID,newTrainObj)).then(()=>{
       Swal.fire({
           icon: 'success',
           title: 'Done',
-          text: 'Created Successfully!',
+          text: 'Successfully Updated!',
         })
         navigate('/trainList');
     });
   }
 
+  const removeStation = (index) => {
+    const updatedStations = [...stations];
+    updatedStations.splice(index, 1);
+    setStations(updatedStations);
+  };
+
   return (
     <div className="regTop">
       <div className="container-fluid ps-md-0 ">
         <div className="row g-0">
-          <div className="d-none d-md-flex col-md-4 col-lg-6 trainEditimage"></div>
+          <div className="d-none d-md-flex col-md-4 col-lg-6 edittrainimage"></div>
           <div className="col-md-8 col-lg-6">
             <div className="login d-flex align-items-center py-5">
               <div className="card-body p-md-5 text-black">
-                <form onSubmit={onSubmitCreate}>
-                  <h3 className="register-heading mb-6">Create A New Train</h3>
+                <form onSubmit={onSubmitUpdate}>
+                  <h3 className="register-heading mb-6">Update Train</h3>
                   <hr className="hr1" />
                   <br />
 
@@ -191,6 +207,7 @@ function CreateTrains() {
                         name="trainName"
                         className="form-control form-control-lg"
                         onChange={(e) => setTrainName(e.target.value)}
+                        value={trainName}
                         required
                       />
                     </div>
@@ -203,6 +220,7 @@ function CreateTrains() {
                         name="seatCount"
                         className="form-control form-control-lg"
                         onChange={(e) => setSeatCount(e.target.value)}
+                        value={seatCount}
                         required
                       />
                     </div>
@@ -238,8 +256,11 @@ function CreateTrains() {
                         {stations.length > 0 ?
                           stations.map((station, index) => (
                             <li key={index}>
-                              <p>Station Name: {station.stationName}</p>
-                              <p>Time: {station.time}</p>
+                              <label>Station Name: {station.stationName}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <span> | </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <label>Time: {station.time}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <Link><MdOutlineDeleteForever color="red" onClick={() => removeStation(index)}></MdOutlineDeleteForever></Link>
+                              <hr></hr>
                             </li>
                           )) :
                           <p>No Stations Added</p>
@@ -279,7 +300,7 @@ function CreateTrains() {
                       className="btn btn-lg btn-warning btn-login text-uppercase fw-bold mb-5"
                       type="submit"
                     >
-                      Create
+                      Update
                     </button>
                   </div>
                 </form>
@@ -292,4 +313,4 @@ function CreateTrains() {
   );
 }
 
-export default CreateTrains;
+export default EditTrain;
