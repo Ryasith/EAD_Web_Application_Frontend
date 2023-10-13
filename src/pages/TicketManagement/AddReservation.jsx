@@ -33,19 +33,16 @@ const {isLoading, isSuccess, message} = useSelector((state)=>state.reservation)
 
   useEffect(()=>{
     checkoutObj = {
-      referenceId: ""+Date.now() + Math.floor(Math.random() * 1000),
+      referenceId: "REF"+Date.now() + Math.floor(Math.random() * 1000),
       nic: user.nic,
       trainId: train.trainId,
       passengersCount: train.requestedSeatCount,
-      // date: "2023-10-09T04:41:29.110Z",
       departure: train.departure,
       arrival: train.arrival,
       depatureTime: train.departureTime,
       arrivalTime: train.arrivalTime,
       averageTimeDuration: "1",
       totalAmount: train.amount,
-      // createdAt: "2023-10-09T04:41:29.110Z",
-      // updatedAt: "2023-10-09T04:41:29.110Z"
   }
   },[train])
 
@@ -54,7 +51,6 @@ const {isLoading, isSuccess, message} = useSelector((state)=>state.reservation)
   },[])
 
   const onCheckout = () => {
-    var refID = Date.now() + Math.floor(Math.random() * 1000);
     dispatch(checkoutResevation(checkoutObj)).then(()=>{
     if (isSuccess){
       Swal.fire({

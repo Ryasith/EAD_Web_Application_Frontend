@@ -266,12 +266,6 @@ const EditReservation = (props) => {
                     >
                       Update
                     </button>
-                    {/* <button
-                      className="btn btn-lg btn-warning btn-login text-uppercase fw-bold mb-5 mx-2"
-                      type="submit"
-                    >
-                      Reset
-                    </button> */}
                   </div>
       </div>
     </div>
