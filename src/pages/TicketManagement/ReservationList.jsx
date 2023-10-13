@@ -132,8 +132,8 @@ const cancelReservation = (id) => () => {
                                 <td >{new Date(item.date).toISOString().split('T')[0]}</td>    
                                 <td >{item.depature}</td>
                                 <td >{item.arrival}</td>
-                                <td >{new Date(item.depatureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
-                                <td >{new Date(item.arrivalTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>    
+                                <td >{item.depatureTime}</td>
+                                <td >{item.arrivalTime}</td>    
                                 <td >{item.averageTimeDuration}</td>
                                 <td >{item.totalAmount}</td>
                                 <td>
@@ -153,20 +153,6 @@ const cancelReservation = (id) => () => {
                 </MDBCol>
             </MDBRow>
         </div>
-        {/* <MDBRow>
-            <MDBCol size="8">
-                <h5>Sort By:</h5>
-                <select style={{width: "50%", borderRadius: "2px", height: "35px"}}
-                onChange={handleSort}
-                value={sortValue}
-                >
-                    <option>Please Select a Value</option>
-                    {sortOptions.map((item,index)=>(
-                        <option value={item} key={index}>{item}</option>
-                    ))}
-                </select>
-            </MDBCol>
-        </MDBRow> */}
     </MDBContainer>
   );
 }

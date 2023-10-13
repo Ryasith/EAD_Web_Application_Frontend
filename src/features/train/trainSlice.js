@@ -52,7 +52,7 @@ export const alltrains = createAsyncThunk(
 
 // Create Train
 export const createtrain = createAsyncThunk(
-  'auth/createtrain',
+  'trains/createtrain',
   async (train, thunkAPI) => {
     try {
       return await trainService.createTrain(train)
@@ -70,7 +70,7 @@ export const createtrain = createAsyncThunk(
 
 // Delete Train By Id
 export const deletetrain = createAsyncThunk(
-  'users/deletetrain',
+  'trains/deletetrain',
   async (id,thunkAPI) => {
     try {
       return await trainService.deleteTrain(id)
@@ -88,10 +88,28 @@ export const deletetrain = createAsyncThunk(
 
 // disable Train
 export const disabletrain = createAsyncThunk(
-  'users/disabletrain',
+  'trains/disabletrain',
   async (id,thunkAPI) => {
     try {
       return await trainService.disableTrain(id)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
+// Update Train by id
+export const updatetrain = createAsyncThunk(
+  'trains/updatetrain',
+  async (id,trainObj,thunkAPI) => {
+    try {
+      return await trainService.updateTrain(id,trainObj)
     } catch (error) {
       const message =
         (error.response &&
@@ -181,6 +199,19 @@ export const trainSlice = createSlice({
         state.message = action.payload
       })
       .addCase(disabletrain.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(updatetrain.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(updatetrain.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.message = action.payload
+      })
+      .addCase(updatetrain.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

@@ -87,7 +87,7 @@ export const updatereservation = createAsyncThunk(
 
 // Delete Reservation
 export const deletereservation = createAsyncThunk(
-  'users/deletereservation',
+  'reservations/deletereservation',
   async (id,thunkAPI) => {
     try {
       return await reservationService.deleteReservation(id)

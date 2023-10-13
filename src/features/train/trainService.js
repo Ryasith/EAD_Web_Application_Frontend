@@ -37,12 +37,20 @@ const disableTrain = async (id) => {
   return response.data
 }
 
+// update train by id
+const updateTrain = async (id,trainObj) => {
+  const response = await axios.put(API_URL+"/"+id,trainObj)
+
+  return response.data
+}
+
 const trainService = {
     TrainList,
     availableTrains,
     createTrain,
     deleteTrain,
     disableTrain,
+    updateTrain,
 }
 
 export default trainService

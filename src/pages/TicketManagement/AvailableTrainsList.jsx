@@ -12,8 +12,6 @@ function AvailableTrainsList() {
     const navigate = useNavigate();
     const { isLoading, availableTrains } = useSelector((state) => state.trains);
     const [value, setValue] = useState("");
-    const [sortValue, setSortValue] = useState("");
-    const sortOptions = ["name", "email", "status"]
 
 const handleBackButtonPress = () => {
     dispatch(reset());
@@ -27,11 +25,6 @@ useEffect(() => {
       window.removeEventListener('popstate', handleBackButtonPress);
     };
   }, []);
-
-  const handleSort = async (e) => {
-    e.preventDefault();
-    //------to-do-----------------
-  }
 
   if (isLoading) {
     return <Spinner />
@@ -105,20 +98,6 @@ useEffect(() => {
                 </MDBCol>
             </MDBRow>
         </div>
-        {/* <MDBRow>
-            <MDBCol size="8">
-                <h5>Sort By:</h5>
-                <select style={{width: "50%", borderRadius: "2px", height: "35px"}}
-                onChange={handleSort}
-                value={sortValue}
-                >
-                    <option>Please Select a Value</option>
-                    {sortOptions.map((item,index)=>(
-                        <option value={item} key={index}>{item}</option>
-                    ))}
-                </select>
-            </MDBCol>
-        </MDBRow> */}
     </MDBContainer>
   );
 }

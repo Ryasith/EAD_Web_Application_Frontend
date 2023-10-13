@@ -7,13 +7,9 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
-      title: 'Slide One',
-      content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic maxime, voluptatibus labore doloremque vero!',
+      title: 'Login',
+      content: 'Login to the application to use application.',
     },
-    // {
-    //   title: 'Slide Two',
-    //   content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit hic maxime, voluptatibus labore doloremque vero!',
-    // }
   ];
 
   const nextSlide = () => {

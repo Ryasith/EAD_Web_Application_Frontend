@@ -21,25 +21,6 @@ function TravelersList() {
     dispatch(travelerslist(3))
   }
 
-  const handleReset = () => {
-    //------to-do-----------------
-  }
-
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    //------to-do-----------------
-  }
-
-  const handleSort = async (e) => {
-    e.preventDefault();
-    //------to-do-----------------
-  }
-
-  const handleFilter = async (e) => {
-    e.preventDefault();
-    //------to-do-----------------
-  }
-
   const selectTraveler = (item) => () => {
     try {
         localStorage.setItem('selectedTraveler', JSON.stringify(item));
@@ -148,7 +129,7 @@ if (isLoading) {
                                 <td >{item.nic}</td>    
                                 <td >{item.name}</td>
                                 <td >{item.email}</td>
-                                <td >{item.userRole}</td>
+                                <td >{item.userRole == 3? "Traveler":"-"}</td>
                                 <td >{item.isActive?"Active":"Inactive"}</td>
                                 <td>
                                 <MDBCol size="4">

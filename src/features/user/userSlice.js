@@ -101,6 +101,24 @@ export const createtraveler = createAsyncThunk(
   }
 )
 
+// Update Traveler by NIC
+export const updatetraveler = createAsyncThunk(
+  'users/updatetraveler',
+  async (nic,travelerObj,thunkAPI) => {
+    try {
+      return await userService.updateTraveler(nic,travelerObj)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -177,6 +195,19 @@ export const userSlice = createSlice({
         state.message = action.payload
       })
       .addCase(createtraveler.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(updatetraveler.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(updatetraveler.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.message = action.payload
+      })
+      .addCase(updatetraveler.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

@@ -37,12 +37,20 @@ const createTraveler = async (userData) => {
   return response.data
 }
 
+// update traveler by nic
+const updateTraveler = async (nic,travelerObj) => {
+  const response = await axios.put(API_URL+"/"+nic,travelerObj)
+
+  return response.data
+}
+
 const userService = {
     userList,
     travelersList,
     deleteUser,
     disableUser,
     createTraveler,
+    updateTraveler,
 }
 
 export default userService
