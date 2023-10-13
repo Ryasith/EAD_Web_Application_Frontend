@@ -21,25 +21,6 @@ function TrainList() {
     dispatch(alltrains());
   }
 
-  const handleReset = () => {
-    //------to-do-----------------
-  }
-
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    //------to-do-----------------
-  }
-
-  const handleSort = async (e) => {
-    e.preventDefault();
-    //------to-do-----------------
-  }
-
-  const handleFilter = async (e) => {
-    e.preventDefault();
-    //------to-do-----------------
-  }
-
   const selectTrain = (item) => () => {
     try {
         localStorage.setItem('selectedTrain', JSON.stringify(item));
@@ -152,7 +133,7 @@ if (isLoading) {
                                         <td>
                                             {item.stations.map((station, stationIndex) => (
                                                 <span key={stationIndex}>
-                                                    {station.stationName} {/* Assuming "name" is the property for station names */}
+                                                    {station.stationName}
                                                     {stationIndex < item.stations.length - 1 ? ', ' : ''}
                                                 </span>
                                             ))}
