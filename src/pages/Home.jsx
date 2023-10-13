@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './HomeComponents/Home.css';
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
+  const navigate = useNavigate()
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
@@ -42,7 +44,7 @@ const Home = () => {
       {slides.map((slide, index) => (
         <div key={index} className={`slide ${index === currentSlide ? 'current' : ''}`}>
           <div className="content">
-          <button>LOGIN</button>
+          <button onClick={()=> navigate('/dashboard')}>LOGIN</button>
           </div>
         </div>
       ))}
