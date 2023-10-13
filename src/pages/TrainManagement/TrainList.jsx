@@ -93,7 +93,6 @@ if (isLoading) {
             alignContent: "center",
         }}
         className='w-auto'
-        onSubmit={handleSearch}
         >
         <h2>Create New Trains</h2>
         <MDBBtnGroup>
